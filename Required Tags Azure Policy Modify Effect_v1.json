@@ -1,0 +1,175 @@
+{
+  "mode": "All",
+  "policyRule": {
+    "if": {
+      "allOf": [
+        {
+            "field": "[concat('tags[',parameters('Tag-Application'), ']')]",
+            "exists": "false"            
+        },
+        {
+          "field": "[concat('tags[',parameters('Tag-Environment'), ']')]",
+          "exists": "false"            
+        },
+        {
+          "field": "[concat('tags[',parameters('Tag-Created-By'), ']')]",
+          "exists": "false"            
+        },
+        {
+          "field": "[concat('tags[',parameters('Tag-Date-Created'), ']')]",
+          "exists": "false"            
+        },
+        {
+          "field": "[concat('tags[',parameters('Tag-Department'), ']')]",
+          "exists": "false"            
+        },
+        {
+          "field": "[concat('tags[',parameters('Tag-Owner'), ']')]",
+          "exists": "false"            
+        },
+        {
+          "field": "type",
+          "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+        }
+      ]
+    },
+    "then": {
+      "effect": "modify",
+      "details": {
+        "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+                  ],
+        "operations": [
+            {
+            "operation": "addOrReplace",
+            "field": "[concat('tags[', parameters('Tag-Application'), ']')]",
+            "value": "[parameters('Value-Application')]"
+          },
+          {
+            "operation": "addOrReplace",
+            "field": "[concat('tags[', parameters('Tag-Environment'), ']')]",
+            "value": "[parameters('Value-Environment')]"
+          },
+          {
+            "operation": "addOrReplace",
+            "field": "[concat('tags[', parameters('Tag-Created-By'), ']')]",
+            "value": "[parameters('Value-Created-By')]"
+          },
+          {
+            "operation": "addOrReplace",
+            "field": "[concat('tags[', parameters('Tag-Date-Created'), ']')]",
+            "value": "[parameters('Value-Date-Created')]"
+          },
+          {
+            "operation": "addOrReplace",
+            "field": "[concat('tags[', parameters('Tag-Department'), ']')]",
+            "value": "[parameters('Value-Department')]"
+          },
+          {
+            "operation": "addOrReplace",
+            "field": "[concat('tags[', parameters('Tag-Owner'), ']')]",
+            "value": "[parameters('Value-Owner')]"
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "Tag-Application": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Tag-Application",
+        "description": "Enter the application this resource belongs to."
+      },
+      "defaultValue": "Application"
+    },
+    "Value-Application": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Value-Application",
+        "description": "Enter the application this resource belongs to."
+      },
+      "defaultValue": "Application"
+    },
+    "Tag-Environment": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Tag-Environment",
+        "description": "Enter the environment this resource belongs to (i.e. dev, prod etc.)."
+      },
+      "defaultValue": "Environment"
+    },
+    "Value-Environment": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Value-Environment",
+        "description": "Enter the environment this resource belongs to (i.e. dev, prod etc.)."
+      },
+      "defaultValue": "Enter the environment this resource belongs to (i.e. dev, prod etc.)."
+    },
+    "Tag-Created-By": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Tag-Created-By",
+        "description": "Name of the person who created this resource."
+      },
+      "defaultValue": "Created-By"
+    },
+    "Value-Created-By": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Value-Created-By",
+        "description": "Name of the person who created this resource."
+      },
+      "defaultValue": "Enter the name of the person who created this resource."
+    },
+    "Tag-Date-Created": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Tag-Date-Created",
+        "description": "Date on which this resource was created."
+      },
+      "defaultValue": "Date-Created"
+    },
+    "Value-Date-Created": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Value-Date-Created",
+        "description": "Date on which this resource was created."
+      },
+      "defaultValue": "Enter the date on which this resource was created."
+    },
+    "Tag-Department": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Tag-Department",
+        "description": "The department this resource belongs to."
+      },
+      "defaultValue": "Department"
+    },
+    "Value-Department": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Value-Department",
+        "description": "The department this resource belongs to."
+      },
+      "defaultValue": "Enter the department this resource belongs to."
+    },
+    "Tag-Owner": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Tag-Owner",
+        "description": "Enter the owner of this resource."
+      },
+      "defaultValue": "Owner"
+    },
+    "Value-Owner": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Value-Owner",
+        "description": "Enter the owner of this resource."
+      },
+      "defaultValue": "Enter the owner of this resource."
+    }
+  }
+ }
